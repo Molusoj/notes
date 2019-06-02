@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=
+no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css'%}" />
+    <title>{% block title %}
+        {% endblock title %}</title>
+</head>
+
+<body>
+    <div id="header">
+        <span class="logo">Bookmarks</span>
+        {% if request.user.is_authenticated %}
+        <ul class="menu">
+            <li {% if section == 'dashboard' %} class="selected" {% endif %}>
+                <a href="{% url 'dashboard' %}">My dashboard</a>
+            </li>
+            <li {% if section == 'images' %} class="selected" {% endif %}>
+                <a href="#">Images</a>
+            </li>
+            <li {% if section == 'people' %} class="selected" {% endif %}>
+                <a href="#">People</a>
+            </li>
+        </ul>
+        {% endif %}
+        <span class="user">
+        {% if request.user.is_authenticated %}
+        	Hello {{request.user.first_name }},
+        	<a href="{% url 'logout' %}">Logout</a>
+        	{% else %}
+        	<a href="{% url 'login' %}">Login</a>
+        {% endif %}
+        </span>
+    </div>
+	{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+				<li class="{{message.tags}}">
+					{{message|safe}}
+					<a href="#" class="close">X</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+    <div id="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <script src="{% static 'js/jquery-3.3.1.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/popper.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/bootstrap.js' %}" type="text/javascript"></script>
+</body>
+
+</html>
