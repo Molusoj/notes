@@ -1,14 +1,44 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block title %}
-	Create an account
+Create an account
 {% endblock title %}
 
 {% block content %}
-	<h1>Create an account</h1>
+
+<header class="masthead">
+	<div class="container h-100">
+		<div class="row h-100">
+			<div class="col-lg-7 my-auto">
+				<div class="header-content mx-auto">
+					<h1 class="mb-5">New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>
+					<a href="{% url 'login' %}" class="btn btn-outline btn-xl js-scroll-trigger">Login</a>
+				</div>
+			</div>
+			<div class="col-lg-5 my-auto bg-white text-dark">
+				<div class="card-body">
+					<h2 class="card-title text-center">Create An Account</h2>
+					<form action="." method="POST">
+						{{ user_form | crispy}}
+						{% csrf_token %}
+						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</header>
+
+
+
+
+	<!-- <h1>Create an account</h1>
 	<form action="." method="POST">
 		{{ user_form.as_p}}
 		{% csrf_token %}
 		<p><input type="submit" value="Create Account"></p>
-	</form>
-{% endblock content %}
+	</form> -->
+	{% endblock content %}
