@@ -1,6 +1,18 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block title %}Logged-Out{% endblock %}
 {% block content %}
-<h1>Logged Out</h1>
-<p>You have been succesully logged out. You can <a href="{% url 'login' %}">Login</a> again.</p>
+ <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-7 ml-auto mr-auto my-auto">
+          <div class="header-content ml-auto mr-auto text-center">
+            <h1 class="mb-5 text-center">You are logged out</h1>
+            <a href="{% url 'register' %}" class="btn btn-outline btn-xl js-scroll-trigger">Register</a>
+             <a href="{% url 'login' %}" class="btn btn-outline btn-xl js-scroll-trigger">Login</a>
+          </div>
+        </div>
+	</div>
+</div>
+  </header>
 {% endblock %}
