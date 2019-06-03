@@ -9,13 +9,23 @@
 <header class="masthead ">
 	<div class="container align-content-center h-100">
 		<div class="row h-100">
-			<div class="col-lg-7 my-auto mx-auto card text-dark">
+			<div class="col-md-12 my-auto mx-auto card text-dark">
 				<div class="mt-3 mx-auto card-header-tabs">
-					<h4 class="mb-3"> {{ note.title }}</h4>
+					<h1 class="mb-3 font-weight-bold"> {{ note.title }}</h1>
 				</div>
-				<p class="card-subtitle"><span><i class="fas fa-date"></i></span> {{note.created | naturaltime }}</p>
-				<p class="card-body">{{note.body}}</p>
+				<span class="card-subtitle text-muted text-center"><i class="icon-clock text-gray-dark"></i> {{note.created }}
+</span>
+				<div class="card-body">
+					{{note.body}}
+				</div>
+			<div class="card-footer">
+            
+          <a class="btn btn-info" href="{% url 'update' note.slug note.pk %}"><span><i class="fas fa-edit"></i></span> Edit Note</a>
+          <a href="{% url 'delete' note.slug note.pk %}" class="btn btn-danger"> <span><i class="fas fa-remove"></i></span> Delete Note</a> 
+            
+          </div>
 			</div>
+			 
 		</div>
 	</div>
 </header>

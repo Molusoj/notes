@@ -4,13 +4,13 @@
 
 }
 
-body {
-    
-    background:#007bff;
-    background: linear-gradient(to right, #0062E6, #33AEFF);
-    margin:0;
-    padding:0;
-    font-family:helvetica, sans-serif;
+
+section.masthead {
+  padding-bottom: 100px;
+  color: white;
+  background: url("../img/bg-pattern.png"), #7b4397;
+  background: url("../img/bg-pattern.png"), -webkit-gradient(linear, right top, left top, from(#7b4397), to(#dc2430));
+  background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
 }
 
 .card-signin{

@@ -27,8 +27,8 @@
       <div class="row h-100">
         <div class="col-lg-7 my-auto">
           <div class="header-content mx-auto">
-            <h1 class="mb-5">New Age is an app landing page that will help you beautifully showcase your new mobile app, or anything else!</h1>
-            <a href="{% url 'register' %}" class="btn btn-outline btn-xl js-scroll-trigger">Register Now for Free</a>
+            <h1 class="mb-5">Your Personal Note Site</h1>
+            <a href="{% url 'register' %}" class="btn btn-outline btn-xl js-scroll-trigger">Register Now</a>
           </div>
         </div>
         <div class="col-lg-5 my-auto bg-white text-dark">
@@ -47,7 +47,7 @@
     			{% csrf_token %}
     			<input type="hidden" name="next" value="{{next}}"/>
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
-              <a class="btn btn-outline-secondary d-block text-center mt-2 small" href="{% url 'password_reset' %}">Forgotten your password ?</a>
+              <!-- <a class="btn btn-outline-secondary d-block text-center mt-2 small" href="{% url 'password_reset' %}">Forgotten your password ?</a> -->
               <hr class="my-4">
               <!--<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
               <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button> -->

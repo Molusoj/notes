@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Dashboard{% endblock %}
+{% load humanize %}
+
+{% block title %}MyNotes{% endblock %}
 {% block content %}
  <header class="masthead">
-    <div class="container h-100">
+    <div class="container h-75">
       <div class="row h-100">
         <div class="col-lg-7 my-auto">
           <div class="header-content mx-auto">
@@ -10,26 +12,35 @@
             <p>Welcome To Your Notes,You can <a href="{% url 'edit' %}">edit your
             profile</a> or <a href="{% url 'password_change' %}">change your
             password</a>.</p>
-            <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Create Note</a>
+            <a href="{% url 'create' %}" class="btn btn-outline btn-xl js-scroll-trigger">Create Note</a>
           </div>
         </div>
-        <div class="col-lg-5 my-auto">
-          <div class="device-container">
-            <div class="device-mockup iphone6_plus portrait white">
-              <div class="device">
-                <div class="screen">
-                  <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                  <img src="img/demo-screen-1.jpg" class="img-fluid" alt="">
-                </div>
-                <div class="button">
-                  <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        
     </div>
+  </div>
   </header>
 
+<section class="masthead text-dark" id="download">
+    <div class="container card">
+      {% for note in notes.all %}
+        <div class="row">
+        <div class="col-md-12">
+          <h2 class="section-heading card-header">{{note.title}}</h2>
+          <div class="card-body">
+                <p> {{note.summary}} </p>
+          </div>
+          <div class="card-footer">
+            <a class="btn btn-primary" href="{% url 'detail' note.slug note.pk %}">View Note</a>
+            <a class="btn btn-info" href="{% url 'update' note.slug note.pk %}">Edit Note</a>
+            <a href="{% url 'delete' note.slug note.pk %}" class="btn btn-danger">Delete Note</a> <span><i class="fas fa-date"></i></span> {{note.created }}
+            
+          </div>
+    
+        </div>
+      </div>
+      {% endfor %}
+      
+    </div>
+  </section>
 {% endblock %}
+

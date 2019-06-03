@@ -60,7 +60,7 @@ ROOT_URLCONF = 'mynotes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['account/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,7 +139,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 

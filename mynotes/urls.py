@@ -21,9 +21,15 @@ from notes import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.HomePageView.as_view(), name='home'),
     path('account/', include('account.urls')),
     path('notes/', include('notes.urls')),
+    path('', views.HomePageView.as_view(), name='home'),
+    path('notes/create/', views.NoteCreateview.as_view(), name='create'),
+    path('notes/detail/<slug>/<pk>/', views.NoteDetailView.as_view(), name='detail'),
+    path('notes/update/<slug>/<pk>/', views.NoteUpdateView.as_view(), name='update'),
+    path('notes/delete/<slug>/<pk>/', views.NoteDeleteView.as_view(), name='delete'),
+
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
