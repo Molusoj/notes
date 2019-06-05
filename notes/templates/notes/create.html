@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Create Note
+{% endblock title %}
+
+{% block content %}
+<header class="masthead ">
+	<div class="container align-content-center h-100">
+		<div class="row h-100">
+			<div class="col-lg-7 my-auto mx-auto card text-dark">
+				<div class="mt-3 mx-auto card-header-tabs">
+					<h4 class="mb-3">Create Note</h4>
+				</div>
+				<form action="" method="POST">
+					{{ form | crispy}}
+					{% csrf_token %}
+					<hr class="lead">
+          <button class="btn btn-lg btn-primary btn-block text-uppercase mt-2 mb-3" type="submit">Create Notes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock content %}
