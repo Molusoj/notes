@@ -18,9 +18,10 @@
 				<div class="card-body">
 					{{note.body}}
 				</div>
-			<div class="card-footer">
+			<div class="card-footer text-center ">
             
-          <a class="btn btn-info" href="{% url 'update' note.slug note.pk %}"><span><i class="fas fa-edit"></i></span> Edit Note</a>
+          <a class="btn btn-primary " href="{% url 'create'%}"><span><i class="fas fa-create"></i></span> Create Note</a>
+          <a class="btn btn-info " href="{% url 'update' note.slug note.pk %}"><span><i class="fas fa-edit"></i></span> Edit Note</a>
           <a href="{% url 'delete' note.slug note.pk %}" class="btn btn-danger"> <span><i class="fas fa-remove"></i></span> Delete Note</a> 
             
           </div>

@@ -10,8 +10,8 @@
           <div class="header-content mx-auto">
             <h1 class="mb-5">Howdy {{request.user.first_name }},</h1>
             <p>Welcome To Your Notes,You can <a href="{% url 'edit' %}">edit your
-            profile</a> or <a href="{% url 'password_change' %}">change your
-            password</a>.</p>
+            profile</a>.</p>
+            <a href="#notes" class="btn btn-outline btn-xl js-scroll-trigger"> View Notes</a>
             <a href="{% url 'create' %}" class="btn btn-outline btn-xl js-scroll-trigger">Create Note</a>
           </div>
         </div>
@@ -20,26 +20,46 @@
   </div>
   </header>
 
-<section class="masthead text-dark" id="download">
+<section class="masthead text-dark" id="notes">
     <div class="container card">
-      {% for note in notes.all %}
-        <div class="row">
-        <div class="col-md-12">
-          <h2 class="section-heading card-header">{{note.title}}</h2>
+              <div class="row">
+{% for note in notes.all %}
+        <div class="col-sm-12">
+          <div class="card-header">
+                      <h2 class="section-heading">{{note.title}} </h2>
+<span class="card-subtitle text-muted text-center"><i class="icon-clock text-gray-dark"></i> {{note.created }} </span>
+          </div>
+
           <div class="card-body">
                 <p> {{note.summary}} </p>
           </div>
-          <div class="card-footer">
-            <a class="btn btn-primary" href="{% url 'detail' note.slug note.pk %}">View Note</a>
-            <a class="btn btn-info" href="{% url 'update' note.slug note.pk %}">Edit Note</a>
-            <a href="{% url 'delete' note.slug note.pk %}" class="btn btn-danger">Delete Note</a> <span><i class="fas fa-date"></i></span> {{note.created }}
-            
+          <div class="card-footer justify-content-center">
+            <a class="btn btn-sm btn-primary mt-2" href="{% url 'detail' note.slug note.pk %}">View Note</a>
+             <a class="btn btn-sm btn-info mt-2 " href="{% url 'update' note.slug note.pk %}"><span><i class="fas fa-edit"></i></span> Edit Note</a>
+          <a href="{% url 'delete' note.slug note.pk %}" class="btn btn-sm btn-danger mt-2"> <span><i class="fas fa-remove"></i></span> Delete Note</a>
           </div>
     
         </div>
-      </div>
       {% endfor %}
-      
+      </div>
+
+        <div class="card-footer">
+          {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center align-content-center pagination-sm">
+            {% if page_obj.has_previous %}
+              <li><a href="?page={{ page_obj.previous_page_number}}" class="page-link"> &laquo; PREV</a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number}}" class="page-link">Next &raquo;</a></li>
+              
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+
+        </div>
+     
     </div>
   </section>
 {% endblock %}

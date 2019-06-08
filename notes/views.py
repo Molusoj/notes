@@ -7,7 +7,7 @@ from .models import Note
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.core.paginator import Paginator
 # Create your views here.
 # @login_required
 # def note_create(request):
@@ -34,6 +34,7 @@ class HomePageView(LoginRequiredMixin, ListView):
     template_name = 'notes/index.html'
     model = Note
     context_object_name = 'notes'
+    paginate_by = 3
 
     def get_queryset(self):
         notes = super().get_queryset()

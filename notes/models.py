@@ -10,7 +10,7 @@ class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=200, blank=True)
-    created = models.DateTimeField(auto_now_add=True, db_index=True)
+    created = models.DateTimeField(auto_now=True, db_index=True)
     body = models.TextField()
 
     def __str__(self):
@@ -24,5 +24,5 @@ class Note(models.Model):
             self.slug = slugify(self.title)
         super(Note, self).save(*args, **kwargs)
 
-    class meta:
+    class Meta:
         ordering = ('-created',)
